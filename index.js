@@ -13,6 +13,26 @@ class Node {
   
   const list = new LinkedList();
   
+  LinkedList.prototype.insertAtEnd = function(data) {
+    let newNode = new Node(data);
+  
+    if (this.head === null) {
+      this.head = newNode;
+      return this.head;
+    }
+  
+    // else
+  
+    let tail = this.head;
+    while (tail.next !== null) {
+      tail = tail.next;
+    }
+  
+    tail.next = newNode;
+  
+    return this.head;
+  };
+  
   LinkedList.prototype.insertAtBeginning = function(data) {
     let newNode = new Node(data);
   
@@ -26,7 +46,7 @@ class Node {
   list.insertAtBeginning({ name: "bob", lastName: "harry" });
   list.insertAtBeginning({ name: "rick", lastName: "barry" });
   list.insertAtBeginning({ name: "john", lastName: "scudiery" });
-  list.insertAtBeginning({ name: "bill", lastName: "norington" });
+  list.insertAtEnd({ name: "bill", lastName: "norington" });
   
   console.log(list);
   
